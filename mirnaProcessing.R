@@ -12,9 +12,11 @@ nanostring.bgAdjust <- function(rawData, bg.method=c("mean.neg.ctrl", "mean.sd.n
     if(!bg.method %in% c("mean.neg.ctrl","mean.sd.neg.ctrl","highest.neg.ctrl"))
         stop("Background adjustment must be one of the following: mean.neg.ctrl, mean.sd.neg.ctrl, highest.neg.ctrl")
 
+    #####################################################################################
     ## rawData is a matrix/dataframe containing raw unprocessed miRNA expression data. ##
     ## rows specifies the probes and columns the samples. neg in a vector of integers ###
-    ## with the position of negative controls in the matrix. ##
+    ## with the position of negative controls in the matrix. #############################
+    ######################################################################################
     Data <- apply(rawData, 2, as.numeric)  
     rownames(Data) <- rownames(rawData)
 
@@ -107,7 +109,7 @@ nanostring.normalize <- function(Data.bg.Adjusted, norm.method=c("Housekeeping.c
 
     ###################################################################################
     ############################### Normalization: ####################################
-    ## After the technical standardization, further normalizations may be required. ###
+    ## After the technical standardization, further normalization may be required. ####
     ## The best normalization strategy will ultimately depend on experimental setup. ## 
     ## house and endo are vectors of integers with the positions of housekeeping ######
     ## genes and endogenous genes in the matrix, respectively. ########################
